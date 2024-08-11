@@ -34,11 +34,6 @@ const Dashboard = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            if(banner.isVisible == true ){
-                banner.isVisible = 1
-            }else{
-                banner.isVisible = 0
-            }
             await axios.put(`${process.env.REACT_APP_API_URL}/banner`, banner);
             alert('Banner updated successfully');
         } catch (error) {
