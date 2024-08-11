@@ -2,7 +2,7 @@ var mysql = require('mysql2');
 require('dotenv').config();
 
 var db = mysql.createConnection({
-    uri: this.process.env.MYSQL_URI,
+    uri: process.env.MYSQL_URI,
     host: process.env.MYSQL_HOST,
     user: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASSWORD,
