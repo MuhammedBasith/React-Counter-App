@@ -10,18 +10,6 @@ const Dashboard = () => {
         isVisible: true
     });
 
-    useEffect(() => {
-        const fetchBanner = async () => {
-            try {
-                const res = await axios.get(`${process.env.REACT_APP_API_URL}/banner`);
-                setBanner(res.data);
-            } catch (error) {
-                console.error('Error fetching banner data:', error);
-            }
-        };
-
-        fetchBanner();
-    }, []);
 
     const handleChange = (e) => {
         setBanner({ ...banner, [e.target.name]: e.target.value });
@@ -34,6 +22,11 @@ const Dashboard = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            if(banner.isVisible == true ){
+                banner.isVisible = 1
+            }else{
+                banner.isVisible = 0
+            }
             await axios.put(`${process.env.REACT_APP_API_URL}/banner`, banner);
             alert('Banner updated successfully');
         } catch (error) {
